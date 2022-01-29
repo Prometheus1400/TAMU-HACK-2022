@@ -1,1 +1,1 @@
-# TAMU-HACK-2022
+This is our project for TAMUHack 2022
