@@ -17,8 +17,30 @@ function SummaryBoard({ sum, setSum }) {
     const re = /^[0-9\b]+$/;
 
     useEffect(() => {
-        setYears(salary + stock);
-    }, [salary, stock]);
+        if (networth == 0) {
+            setYears(0);
+        } else if (networth > 0 && (salary > 0 || stock > 0)) {
+            let number_of_years = findYears(networth, saving, salary, stock);
+            if (number_of_years > -1) {
+                setYears(number_of_years);
+            }
+
+            console.log("Number of years till retirement:", number_of_years);
+        }
+    }, [networth, saving, salary, stock]);
+
+    function findYears(networth, saving, salary, stock) {
+        let target = networth - saving;
+        for (let n = 0; n < 100; n++) {
+            let sum = 0;
+            sum = salary * n + stock * Math.pow(1.7, n);
+            if (sum >= target) {
+                return n;
+            }
+        }
+
+        return -1;
+    }
 
     function handleTarget(event) {
         if (event.target.value === "" || re.test(event.target.value)) {
@@ -50,7 +72,10 @@ function SummaryBoard({ sum, setSum }) {
         <>
             <h1 className="center">Want to retire?</h1>
             <div>
-                <FormControl fullWidth sx={{ m: 1 }}>
+                <FormControl
+                    fullWidth
+                    sx={{ marginLeft: 0, marginTop: 1, marginBottom: 1 }}
+                >
                     <InputLabel htmlFor="outlined-adornment-amount">
                         Target Networth
                     </InputLabel>
@@ -65,11 +90,13 @@ function SummaryBoard({ sum, setSum }) {
                     />
                 </FormControl>
             </div>
-
             <div>
-                <FormControl fullWidth sx={{ m: 1 }}>
+                <FormControl
+                    fullWidth
+                    sx={{ marginLeft: 0, marginTop: 1, marginBottom: 1 }}
+                >
                     <InputLabel htmlFor="outlined-adornment-amount">
-                        Current Saving
+                        Current Savings
                     </InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-amount"
@@ -78,15 +105,17 @@ function SummaryBoard({ sum, setSum }) {
                         startAdornment={
                             <InputAdornment position="start">$</InputAdornment>
                         }
-                        label="Current Saving"
+                        label="Current Savings"
                     />
                 </FormControl>
             </div>
-
             <div>
-                <FormControl fullWidth sx={{ m: 1 }}>
+                <FormControl
+                    fullWidth
+                    sx={{ marginLeft: 0, marginTop: 1, marginBottom: 1 }}
+                >
                     <InputLabel htmlFor="outlined-adornment-amount">
-                        Base Salary
+                        Salary After Expenses
                     </InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-amount"
@@ -95,15 +124,17 @@ function SummaryBoard({ sum, setSum }) {
                         startAdornment={
                             <InputAdornment position="start">$</InputAdornment>
                         }
-                        label="Base Salary"
+                        label="Salary After Expenses"
                     />
                 </FormControl>
             </div>
-
             <div>
-                <FormControl fullWidth sx={{ m: 1 }}>
+                <FormControl
+                    fullWidth
+                    sx={{ marginLeft: 0, marginTop: 1, marginBottom: 1 }}
+                >
                     <InputLabel htmlFor="outlined-adornment-amount">
-                        4-year Stocks Package
+                        Current Stock Investments
                     </InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-amount"
@@ -112,14 +143,13 @@ function SummaryBoard({ sum, setSum }) {
                         startAdornment={
                             <InputAdornment position="start">$</InputAdornment>
                         }
-                        label="4-year Stocks Package"
+                        label="Current Stock Investments"
                     />
                 </FormControl>
             </div>
-
             <div>
                 <h2 className="center">Countdown to Financial Freedom:</h2>
-                <h2 className="center">{years}</h2>
+                <h2 className="center">{years} years</h2>
             </div>
         </>
     );
