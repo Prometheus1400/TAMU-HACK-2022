@@ -27,7 +27,7 @@ export default function Graph() {
         data && (
             <div>
                 <h1 className="gtitle">
-                    Historical data of SPY, QQQ, SCHD (since 2017)
+                    Historical data of SPY, QQQ, SCHD, AAPL (since 2017)
                 </h1>
                 <LineChart
                     width={750}
