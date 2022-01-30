@@ -5,7 +5,6 @@ import {
     OutlinedInput,
     InputAdornment,
 } from "@mui/material";
-import { func } from "prop-types";
 
 function SummaryBoard({ sum, setSum }) {
     const [networth, setNetworth] = useState("");
