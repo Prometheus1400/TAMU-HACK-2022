@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Switch } from "@mui/material";
 import "./toggleBoard.css";
-import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+
+const COLORS = [
+    "#0088FE",
+    "#00C49F",
+    "#FFBB28",
+    "#FF8042",
+    "#f242f5",
+    "#63f542",
+    "#42f5d7",
+    "#f54263",
+];
 
 function ToggleBoard({ sum, setSum }) {
     const [togArray, setToggleArray] = useState([
@@ -88,15 +99,22 @@ function ToggleBoard({ sum, setSum }) {
                 <ResponsiveContainer width="100%" height="40%">
                     <PieChart width={40} height={40}>
                         <Pie
-                            dataKey="value"
-                            isAnimationActive={false}
                             data={pieChart}
-                            cx="50%"
+                            ccx="50%"
                             cy="50%"
+                            label
+                            labelLine={true}
                             outerRadius={80}
                             fill="#8884d8"
-                            label
-                        />
+                            dataKey="value"
+                        >
+                            {pieChart.map((entry, index) => (
+                                <Cell
+                                    key={`cell-${index}`}
+                                    fill={COLORS[index % COLORS.length]}
+                                />
+                            ))}
+                        </Pie>
                         <Tooltip />
                     </PieChart>
                 </ResponsiveContainer>
