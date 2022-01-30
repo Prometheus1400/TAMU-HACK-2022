@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Switch } from "@mui/material";
 import "./toggleBoard.css";
+import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
 
 function ToggleBoard({ sum, setSum }) {
     const [togArray, setToggleArray] = useState([
@@ -13,17 +14,40 @@ function ToggleBoard({ sum, setSum }) {
         false,
         false,
     ]);
+    const [pieChart, setPieChart] = useState([]);
     const price = [15.49, 12.99, 14.99, 9.99, 11.99, 12.99, 9.99, 7.99];
+    const names = [
+        "Netflix",
+        "Hulu",
+        "HBO Max",
+        "Spotify",
+        "Youtube Preimum",
+        "Amazon Prime",
+        "Apple Music",
+        "Disney+",
+    ];
 
     useEffect(() => {
         let newSum = 0;
+        let newPieChart = [];
         togArray.map((item, index) => {
             if (item) {
                 newSum += price[index];
+                newPieChart = [
+                    ...newPieChart,
+                    {
+                        name: names[index],
+                        value: parseFloat(
+                            (price[index] * 12 * 1.0825).toFixed(2)
+                        ),
+                    },
+                ];
             }
         });
         console.log(newSum);
+        console.log(newPieChart);
         setSum(newSum);
+        setPieChart(newPieChart);
     }, [togArray]);
 
     const subs = [
@@ -59,6 +83,24 @@ function ToggleBoard({ sum, setSum }) {
                     </>
                 );
             })}
+            {console.log(pieChart)}
+            {pieChart.length > 0 && (
+                <ResponsiveContainer width="100%" height="40%">
+                    <PieChart width={40} height={40}>
+                        <Pie
+                            dataKey="value"
+                            isAnimationActive={false}
+                            data={pieChart}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            fill="#8884d8"
+                            label
+                        />
+                        <Tooltip />
+                    </PieChart>
+                </ResponsiveContainer>
+            )}
         </>
     );
 }
