@@ -9,6 +9,7 @@ import {
     Legend,
 } from "recharts";
 import Papa from "papaparse";
+import "../App.css";
 
 export default function Graph() {
     const [data, setData] = useState([]);
@@ -25,6 +26,9 @@ export default function Graph() {
     return (
         data && (
             <div>
+                <h1 className="gtitle">
+                    Historical data of SPY, QQQ, SCHD (since 2017)
+                </h1>
                 <LineChart
                     width={750}
                     height={400}

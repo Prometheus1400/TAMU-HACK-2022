@@ -10,7 +10,7 @@ function ToggleBoard({ sum, setSum }) {
         false,
         false,
     ]);
-    const price = [10 * 12, 12 * 12, 14 * 12, 18 * 12, 16 * 12];
+    const price = [15.49, 12.99, 14.99, 9.99, 11.99, 12.99, 9.99, 7.99];
 
     useEffect(() => {
         let newSum = 0;
@@ -23,7 +23,16 @@ function ToggleBoard({ sum, setSum }) {
         setSum(newSum);
     }, [togArray]);
 
-    const subs = ["Netflix", "Hulu", "HBO Max", "Spotify", "Youtube Premium"];
+    const subs = [
+        "Netflix",
+        "Hulu",
+        "HBO Max",
+        "Spotify",
+        "Youtube Premium",
+        "Amazon Prime",
+        "Apple Music",
+        "Disney+",
+    ];
 
     function handleChange(event) {
         //console.log("Before:", togArray);
