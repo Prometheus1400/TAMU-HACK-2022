@@ -17,29 +17,52 @@ function SummaryBoard({ sum, setSum }) {
     const re = /^[0-9\b]+$/;
 
     useEffect(() => {
-        if (networth == 0) {
-            setYears(0);
+        if (networth === "" || (salary === "" && stock === "")) {
+            setYears("");
         } else if (networth > 0 && (salary > 0 || stock > 0)) {
             let number_of_years = findYears(networth, saving, salary, stock);
-            if (number_of_years > -1) {
+            if (number_of_years > 0) {
                 setYears(number_of_years);
             }
 
-            console.log("Number of years till retirement:", number_of_years);
+            //console.log("Number of years till retirement:", number_of_years);
         }
     }, [networth, saving, salary, stock]);
 
+    // function findYears(networth, saving, salary, stock) {
+    //     let target = networth - saving;
+    //     for (let n = 0; n < 100; n++) {
+    //         let sum = 0;
+    //         sum = salary * n + stock * Math.pow(1.07, n);
+    //         if (sum >= target) {
+    //             return n;
+    //         }
+    //     }
+
+    //     return -1;
+    // }
     function findYears(networth, saving, salary, stock) {
         let target = networth - saving;
-        for (let n = 0; n < 100; n++) {
-            let sum = 0;
-            sum = salary * n + stock * Math.pow(1.07, n);
-            if (sum >= target) {
-                return n;
+        let lo = 0;
+        let hi = 1000000;
+
+        while (lo < hi) {
+            let mid = Math.floor((hi + lo) / 2);
+            sum = salary * mid + stock * Math.pow(1.07, mid);
+            if (sum < target) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
             }
         }
 
-        return -1;
+        if (salary * lo + stock * Math.pow(1.07, lo) < target) {
+            //console.log("n = ", lo);
+            return lo + 1;
+        }
+
+        //console.log("n = ", lo);
+        return lo;
     }
 
     function handleTarget(event) {
@@ -147,10 +170,12 @@ function SummaryBoard({ sum, setSum }) {
                     />
                 </FormControl>
             </div>
-            <div>
-                <h2 className="center">Countdown to Financial Freedom:</h2>
-                <h2 className="center">{years} years</h2>
-            </div>
+            {years !== "" && (
+                <div>
+                    <h2 className="center">Countdown to Financial Freedom:</h2>
+                    <h2 className="center">{years} years</h2>
+                </div>
+            )}
         </>
     );
 }
