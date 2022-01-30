@@ -59,11 +59,16 @@ export default function Graph() {
                         strokeWidth={1.5}
                         dot={false}
                     />
-
                     <Line
                         type="monotone"
                         dataKey="SCHD"
                         stroke="#ca9b82"
+                        dot={false}
+                    />
+                    <Line
+                        type="monotone"
+                        dataKey="AAPL"
+                        stroke="#930335"
                         dot={false}
                     />
                 </LineChart>
