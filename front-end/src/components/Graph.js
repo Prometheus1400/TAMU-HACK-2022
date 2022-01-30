@@ -26,13 +26,13 @@ export default function Graph() {
         data && (
             <div>
                 <LineChart
-                    width={800}
+                    width={750}
                     height={400}
                     data={data}
                     margin={{
                         top: 5,
-                        right: 30,
-                        left: 20,
+                        right: 40,
+                        left: 10,
                         bottom: 5,
                     }}
                 >
@@ -46,11 +46,13 @@ export default function Graph() {
                         dataKey="SPY"
                         stroke="#8884d8"
                         dot={false}
+                        strokeWidth={1.5}
                     />
                     <Line
                         type="monotone"
                         dataKey="QQQ"
                         stroke="#82ca9d"
+                        strokeWidth={1.5}
                         dot={false}
                     />
 

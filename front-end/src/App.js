@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import SumCount from "./components/sumCount";
 import ToggleBoard from "./components/toggleboard/toggleBoard";
 import SummaryBoard from "./components/summaryBoard/summaryBoard";
+import Graph from "./components/Graph";
 import "./App.css";
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
 
                     <Grid item md={6}>
                         <div className="grid-comp">
-                            <h1>Big Boi Graphs goes here</h1>
+                            {/* <h1>Big Boi Graphs goes here</h1> */}
+                            <Graph />
                         </div>
                     </Grid>
 
