@@ -129,7 +129,7 @@ function SummaryBoard({ sum, setSum }) {
                     sx={{ marginLeft: 0, marginTop: 1, marginBottom: 1 }}
                 >
                     <InputLabel htmlFor="outlined-adornment-amount">
-                        Current Savings
+                        Current Networth
                     </InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-amount"
@@ -138,7 +138,7 @@ function SummaryBoard({ sum, setSum }) {
                         startAdornment={
                             <InputAdornment position="start">$</InputAdornment>
                         }
-                        label="Current Savings"
+                        label="Current Networth"
                     />
                 </FormControl>
             </div>
@@ -148,7 +148,7 @@ function SummaryBoard({ sum, setSum }) {
                     sx={{ marginLeft: 0, marginTop: 1, marginBottom: 1 }}
                 >
                     <InputLabel htmlFor="outlined-adornment-amount">
-                        Salary After Expenses
+                        Expected Yearly Savings
                     </InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-amount"
@@ -157,7 +157,7 @@ function SummaryBoard({ sum, setSum }) {
                         startAdornment={
                             <InputAdornment position="start">$</InputAdornment>
                         }
-                        label="Salary After Expenses"
+                        label="Expected Yearly Savings"
                     />
                 </FormControl>
             </div>
