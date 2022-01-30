@@ -7,6 +7,7 @@ import {
     Select,
     MenuItem,
 } from "@mui/material";
+import { rgb } from "color-convert";
 
 const SPY = 1.15;
 const QQQ = 1.247;
@@ -50,7 +51,13 @@ function StockBoard({ name, sum, description, color }) {
     }
 
     return (
-        <>
+        <div
+            style={{
+                background: "rgba(248, 248, 248, 0.85)",
+                borderRadius: "1.5em",
+                padding: "20px",
+            }}
+        >
             <h1 className="center" style={{ color: color }}>
                 {name}
             </h1>
@@ -81,21 +88,19 @@ function StockBoard({ name, sum, description, color }) {
                 </FormControl>
             </div>
 
-            {years.map((year, index) => (
-                <div>
-                    {name === "SPY" ? (
-                        <div>
-                            <h3 className="center">In {year} year(s):</h3>
-                        </div>
-                    ) : (
-                        <h3>&nbsp;</h3>
-                    )}
+            {(input > 0 || sum > 0) &&
+                years.map((year, index) => (
                     <div>
-                        <h3 className="center">$ {output[index]}</h3>
+                        <div>
+                            <h4 className="center">In {year} year(s):</h4>
+                        </div>
+
+                        <div>
+                            <h2 className="center">$ {output[index]}</h2>
+                        </div>
                     </div>
-                </div>
-            ))}
-        </>
+                ))}
+        </div>
     );
 }
 
