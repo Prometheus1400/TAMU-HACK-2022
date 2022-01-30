@@ -10,7 +10,7 @@ function ToggleBoard({ sum, setSum }) {
         false,
         false,
     ]);
-    const price = [10, 12, 14, 18, 16];
+    const price = [10 * 12, 12 * 12, 14 * 12, 18 * 12, 16 * 12];
 
     useEffect(() => {
         let newSum = 0;
