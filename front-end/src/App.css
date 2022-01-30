@@ -1,0 +1,33 @@
+html {
+    background: url("static/background.jpeg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-text-size-adjust: auto;
+    font-family: "Roboto", sans-serif;
+}
+
+h1.title {
+    text-align: center;
+}
+
+.grid-comp {
+    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 1.5em;
+    display: flex;
+    justify-content: center;
+}
+
+.grid-comp a {
+    color: #fff;
+}
+
+.toggle-board {
+    margin: 0 auto;
+}
+
+.summary {
+    margin: 0 auto;
+}
