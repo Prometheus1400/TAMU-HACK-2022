@@ -53,6 +53,13 @@ export default function Graph() {
                         stroke="#82ca9d"
                         dot={false}
                     />
+
+                    <Line
+                        type="monotone"
+                        dataKey="SCHD"
+                        stroke="#ca9b82"
+                        dot={false}
+                    />
                 </LineChart>
             </div>
         )
