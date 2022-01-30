@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import SumCount from "./components/sumCount";
 import ToggleBoard from "./components/toggleboard/toggleBoard";
 import SummaryBoard from "./components/summaryBoard/summaryBoard";
+import StockBoard from "./components/stockBoard/stockBoard";
 import Graph from "./components/Graph";
 import "./App.css";
 
@@ -28,6 +29,49 @@ function App() {
                         <div className="grid-comp">
                             <div className="graph">
                                 <Graph />
+
+                                <Box sx={{ flexGrow: 1 }}>
+                                    <Grid container spacing={2}>
+                                        <Grid item md={4}>
+                                            <div className="grid-comp">
+                                                <div className="summary">
+                                                    <StockBoard
+                                                        name="SPY"
+                                                        description="Moderate risk & reward"
+                                                        color="rgb(136, 132, 216)"
+                                                        sum={sum}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </Grid>
+
+                                        <Grid item md={4}>
+                                            <div className="grid-comp">
+                                                <div className="summary">
+                                                    <StockBoard
+                                                        name="QQQ"
+                                                        description="High risk & reward"
+                                                        color="rgb(130, 202, 157)"
+                                                        sum={sum}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </Grid>
+
+                                        <Grid item md={4}>
+                                            <div className="grid-comp">
+                                                <div className="summary">
+                                                    <StockBoard
+                                                        name="SCHD"
+                                                        description="Low risk & reward"
+                                                        color="rgb(202, 155, 130)"
+                                                        sum={sum}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
                             </div>
                         </div>
                     </Grid>
