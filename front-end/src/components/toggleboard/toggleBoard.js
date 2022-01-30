@@ -9,6 +9,9 @@ function ToggleBoard({ sum, setSum }) {
         false,
         false,
         false,
+        false,
+        false,
+        false,
     ]);
     const price = [15.49, 12.99, 14.99, 9.99, 11.99, 12.99, 9.99, 7.99];
 
