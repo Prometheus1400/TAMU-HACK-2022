@@ -26,7 +26,6 @@ function App() {
 
                     <Grid item md={6}>
                         <div className="grid-comp">
-                            {/* <h1>Big Boi Graphs goes here</h1> */}
                             <Graph />
                         </div>
                     </Grid>

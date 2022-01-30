@@ -25,6 +25,7 @@ export default function Graph() {
     return (
         data && (
             <div>
+                <h1>Comparing returns of SPY, QQQ, and SCHD</h1>
                 <LineChart
                     width={750}
                     height={400}
