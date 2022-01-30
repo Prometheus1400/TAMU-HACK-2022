@@ -98,6 +98,16 @@ function ToggleBoard({ sum, setSum }) {
     return (
         <>
             <h1>Subscriptions</h1>
+            <p
+                style={{
+                    color: "grey",
+                    fontSize: "12px",
+                    marginTop: "-20px",
+                }}
+            >
+                Prices prorated to annual subscription.
+            </p>
+
             {subs.map((sub, index) => {
                 return (
                     <>

@@ -94,6 +94,16 @@ function SummaryBoard({ sum, setSum }) {
     return (
         <>
             <h1 className="center">Want to retire?</h1>
+            <p
+                style={{
+                    color: "grey",
+                    fontSize: "12px",
+                    marginTop: "-20px",
+                }}
+            >
+                Assuming an annualized 7% stock growth rate (all invested in SPY
+                and adjusted for inflation), and constant base salary.
+            </p>
             <div>
                 <FormControl
                     fullWidth
