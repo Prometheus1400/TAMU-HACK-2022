@@ -33,7 +33,7 @@ function SummaryBoard({ sum, setSum }) {
         let target = networth - saving;
         for (let n = 0; n < 100; n++) {
             let sum = 0;
-            sum = salary * n + stock * Math.pow(1.7, n);
+            sum = salary * n + stock * Math.pow(1.07, n);
             if (sum >= target) {
                 return n;
             }
