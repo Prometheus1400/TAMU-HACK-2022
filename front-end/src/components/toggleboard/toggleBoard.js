@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Switch } from "@mui/material";
 import "./toggleBoard.css";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import { withTheme } from "@emotion/react";
 
 const COLORS = [
     "#0088FE",
@@ -37,6 +38,19 @@ function ToggleBoard({ sum, setSum }) {
         "Apple Music",
         "Disney+",
     ];
+
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active && payload && payload.length) {
+            console.log("Test:", active, payload, label);
+            return (
+                <div className="custom-tooltip">
+                    <p className="label">{`${payload[0].name} : ${payload[0].value}`}</p>
+                </div>
+            );
+        }
+
+        return null;
+    };
 
     useEffect(() => {
         let newSum = 0;
@@ -115,7 +129,7 @@ function ToggleBoard({ sum, setSum }) {
                                 />
                             ))}
                         </Pie>
-                        <Tooltip />
+                        <Tooltip content={<CustomTooltip />} />
                     </PieChart>
                 </ResponsiveContainer>
             )}
